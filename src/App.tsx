@@ -26,8 +26,8 @@ export default function App(){
   const openEntry=(entry?:JournalEntry,date=selectedDate)=>{setSelectedDate(date);setEditing(entry);setEntryOpen(true)};
   if(loading)return <div className="loading"><Leaf/><span>Открываем дневник…</span></div>;
   return <div className="app-shell">
-    <aside className="side-nav"><div className="brand"><span className="brand-mark"><Leaf/></span><div><b>Тихий день</b><small>дневник чувств</small></div></div><nav>{navItems.map(([id,label,Icon])=><button key={id} className={page===id?'active':''} onClick={()=>setPage(id)}><Icon/><span>{label}</span></button>)}</nav><p className="privacy-mini"><MoonStar/> Только на твоём устройстве</p></aside>
-    <main><div className="mobile-brand"><div className="brand"><span className="brand-mark"><Leaf/></span><b>Тихий день</b></div><IconButton label="Настройки" onClick={()=>setPage('settings')}><Menu/></IconButton></div>
+    <aside className="side-nav"><div className="brand"><span className="brand-mark"><img src={`${import.meta.env.BASE_URL}icon-192.png`} alt=""/></span><div><b>Тихий день</b><small>дневник чувств</small></div></div><nav>{navItems.map(([id,label,Icon])=><button key={id} className={page===id?'active':''} onClick={()=>setPage(id)}><Icon/><span>{label}</span></button>)}</nav><p className="privacy-mini"><MoonStar/> Только на твоём устройстве</p></aside>
+    <main><div className="mobile-brand"><div className="brand"><span className="brand-mark"><img src={`${import.meta.env.BASE_URL}icon-192.png`} alt=""/></span><b>Тихий день</b></div><IconButton label="Настройки" onClick={()=>setPage('settings')}><Menu/></IconButton></div>
       {page==='today'&&<TodayPage onEntry={openEntry} onColor={(date)=>{setSelectedDate(date);setColorOpen(true)}}/>}
       {page==='calendar'&&<CalendarPage onEntry={openEntry} onColor={(date)=>{setSelectedDate(date);setColorOpen(true)}}/>}
       {page==='emotions'&&<EmotionsPage/>}

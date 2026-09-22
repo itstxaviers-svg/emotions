@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icon.svg'],
+      includeAssets: ['icon.svg', 'icon-maskable.svg', 'icon-192.png', 'icon-512.png'],
       manifest: {
         name: 'Тихий день — дневник чувств',
         short_name: 'Тихий день',
@@ -20,8 +20,10 @@ export default defineConfig({
         scope: '/emotions/',
         lang: 'ru',
         icons: [
-          { src: '/emotions/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
-          { src: '/emotions/icon-maskable.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' }
+          { src: '/emotions/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: '/emotions/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          { src: '/emotions/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+          { src: '/emotions/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' }
         ]
       },
       workbox: { navigateFallback: 'index.html', globPatterns: ['**/*.{js,css,html,svg}'] }

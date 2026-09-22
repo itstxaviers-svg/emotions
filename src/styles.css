@@ -14,6 +14,7 @@ html,body{overflow-x:hidden}h1{overflow-wrap:anywhere}.page-header>div,.color-em
 /* A warm petal-pink palette with no violet undertone. */
 body{background:radial-gradient(circle at 82% -5%,rgba(232,156,164,.26),transparent 31rem),radial-gradient(circle at 0 38%,rgba(245,199,190,.3),transparent 30rem),var(--bg-main)}
 .brand-mark{background:#fae1e2;color:#bd737b;box-shadow:inset 0 0 0 1px rgba(162,89,94,.08)}
+.brand-mark img{display:block;width:100%;height:100%;border-radius:inherit;object-fit:cover}
 .paint-spot{background:linear-gradient(145deg,#f4d7d6,#e9bebf);color:#b66f76}
 .modal-backdrop{background:rgba(51,38,36,.46)}
 .bottom-nav{box-shadow:0 14px 45px rgba(94,56,55,.16)}
