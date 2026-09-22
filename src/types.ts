@@ -1,0 +1,13 @@
+export type Intensity = 1 | 2 | 3 | 4 | 5;
+export type EmotionNode = { id: string; label: string; description?: string; children?: EmotionNode[] };
+export type EmotionFamily = EmotionNode & { accent: string };
+export type SelectedEmotion = { emotionId: string; familyId: string; intensity?: Intensity };
+export type SelectedState = { stateId: string; intensity?: Intensity };
+export type JournalEntry = { id: string; timestamp: string; emotions: SelectedEmotion[]; states: SelectedState[]; note?: string; createdAt: string; updatedAt: string };
+export type DayColor = { hex: string; hsl: { h: number; s: number; l: number }; label?: string };
+export type DayData = { date: string; color?: DayColor; entries: JournalEntry[]; createdAt: string; updatedAt: string };
+export type Theme = 'light' | 'dark' | 'system';
+export type AppSettings = { theme: Theme; reduceMotion: boolean; favoriteEmotions: string[]; favoriteStates: string[]; recentEmotions: string[]; hiddenEmotions: string[]; hiddenStates: string[]; customStates: StateItem[]; customEmotions: CustomEmotion[] };
+export type StateItem = { id: string; label: string; custom?: boolean };
+export type CustomEmotion = { id: string; label: string; familyId: string };
+export type BackupFile = { schemaVersion: number; exportedAt: string; appVersion: string; days: DayData[]; settings: AppSettings; customEmotions: CustomEmotion[]; customStates: StateItem[] };

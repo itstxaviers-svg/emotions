@@ -1,0 +1,34 @@
+import type { EmotionFamily, EmotionNode, StateItem } from './types';
+
+const n = (id: string, label: string, children?: EmotionNode[], description?: string): EmotionNode => ({ id, label, children, description });
+
+export const emotionFamilies: EmotionFamily[] = [
+  { ...n('joy','Радость',[
+    n('interest','Интерес',[n('curiosity','Любопытство'),n('engagement','Вовлечённость'),n('anticipation','Предвкушение')],'Живое внимание к тому, что хочется узнать или исследовать.'),
+    n('pleasure','Удовольствие'),n('gratitude','Благодарность'),n('tenderness','Нежность'),n('inspiration','Вдохновение'),
+    n('satisfaction','Удовлетворение',[n('contentment','Довольство'),n('completion','Чувство завершённости'),n('comfort','Комфорт'),n('accepting_result','Принятие результата')]),
+    n('hope','Надежда'),n('love','Любовь',[n('care','Забота'),n('closeness','Близость'),n('attachment','Привязанность')]),
+    n('relief','Облегчение',[n('letting_go','Отпускание напряжения'),n('feeling_safe','Чувство безопасности'),n('calming','Успокоение')]),
+    n('pride','Гордость'),n('uplift','Воодушевление',[n('enthusiasm','Энтузиазм'),n('motivation','Мотивация'),n('rise','Подъём')]),n('fun','Веселье'),n('delight','Восторг'),n('confidence','Уверенность')]), accent:'#d9ae54' },
+  { ...n('sadness','Грусть',[n('sorrow','Печаль'),n('loneliness','Одиночество',[n('isolation','Изоляция'),n('unneeded','Ощущение ненужности'),n('lack_closeness','Нехватка близости'),n('distance','Отдалённость')]),n('melancholy','Тоска'),n('disappointment','Разочарование',[n('unmet_expectation','Несбывшееся ожидание'),n('regret','Сожаление'),n('upset','Огорчение')]),n('pain','Боль'),n('helplessness','Беспомощность'),n('despair','Отчаяние'),n('guilt','Вина',[n('regret_action','Сожаление о поступке'),n('responsibility','Чувство ответственности')]),n('shame','Стыд',[n('awkwardness','Неловкость'),n('humiliation','Унижение'),n('mismatch','Ощущение несоответствия')]),n('vulnerability','Уязвимость',[n('sensitivity','Чувствительность'),n('unprotected','Незащищённость')]),n('loss','Потеря'),n('gloom','Уныние'),n('suppression','Подавленность')]), accent:'#7692a7' },
+  { ...n('fear','Страх',[n('anxiety','Тревога',[n('worry','Беспокойство'),n('expecting_bad','Ожидание плохого'),n('inner_tension','Внутреннее напряжение'),n('unclear_fear','Неясный страх')],'Ощущение беспокойства или ожидания, что что-то может пойти не так.'),n('nervousness','Нервозность'),n('fright','Испуг'),n('uncertainty','Неуверенность',[n('doubt','Сомнение'),n('fear_mistake','Страх ошибки'),n('fear_judgment','Страх оценки'),n('indecision','Нерешительность')]),n('alertness','Настороженность',[n('caution','Осторожность'),n('expecting_danger','Ожидание опасности'),n('distrust_situation','Недоверие к ситуации')]),n('panic','Паника',[n('strong_fright','Сильный испуг'),n('loss_control','Потеря ощущения контроля')]),n('apprehension','Опасение'),n('tense_waiting','Напряжённое ожидание'),n('confusion','Растерянность'),n('threat','Ощущение угрозы')]), accent:'#928da8' },
+  { ...n('anger','Злость',[n('irritation','Раздражение',[n('annoyance','Досада'),n('impatience','Нетерпение')],'Недовольство или внутреннее напряжение, когда что-то мешает, утомляет или повторяется.'),n('dissatisfaction','Недовольство'),n('frustration','Фрустрация',[n('powerlessness','Бессилие'),n('obstacle','Помеха'),n('blocked_desire','Невозможность получить желаемое')]),n('resentment','Обида',[n('unfairness','Чувство несправедливости'),n('hurt_pride','Задетость'),n('emotional_pain','Эмоциональная боль')]),n('indignation','Возмущение',[n('protest','Протест'),n('outrage','Негодование')]),n('rage','Ярость',[n('strong_anger','Сильная злость'),n('urge_react','Желание резко отреагировать')]),n('jealousy','Ревность'),n('envy','Зависть'),n('hostility','Враждебность')]), accent:'#b97862' },
+  { ...n('disgust','Отвращение',[n('dislike','Неприязнь',[n('antipathy','Антипатия'),n('inner_resistance','Внутреннее сопротивление'),n('avoid_contact','Нежелание контакта')]),n('revulsion','Брезгливость',[n('physical_disgust','Физическое отвращение'),n('sensory_rejection','Сенсорное отторжение')]),n('rejection','Отторжение',[n('distance_wish','Желание дистанцироваться'),n('nonacceptance','Неприятие')]),n('disgust_feeling','Отвращение'),n('situation_disgust','Отвращение к ситуации'),n('moral_rejection','Моральное отторжение')]), accent:'#86916b' },
+  { ...n('surprise','Удивление',[n('surprise_feeling','Удивление',[n('pleasant_surprise','Приятное удивление'),n('neutral_surprise','Нейтральное удивление'),n('unpleasant_surprise','Неприятное удивление')]),n('amazement','Изумление'),n('admiration','Восхищение'),n('shock','Шок',[n('stunned','Ошеломление'),n('hard_to_process','Трудность сразу осмыслить происходящее')]),n('puzzlement','Растерянность',[n('not_understanding','Непонимание'),n('lost_bearings','Потеря ориентиров'),n('ambiguity','Неопределённость')]),n('unexpectedness','Неожиданность'),n('perplexity','Озадаченность'),n('jolt','Потрясение')]), accent:'#a989b3' },
+  { ...n('calm','Спокойствие',[n('peace','Умиротворение',[n('quiet_joy','Тихая радость'),n('no_rush','Отсутствие внутренней спешки'),n('gentle_calm','Мягкое спокойствие')]),n('relaxation','Расслабленность',[n('no_tension','Отсутствие напряжения'),n('rest','Отдых'),n('body_comfort','Телесный комфорт')]),n('stability','Устойчивость'),n('acceptance','Принятие'),n('inner_silence','Внутренняя тишина'),n('neutrality','Нейтральность'),n('safety','Безопасность'),n('satisfied_calm','Удовлетворённое спокойствие'),n('clarity','Ясность',[n('composure','Собранность'),n('understanding','Понимание'),n('inner_order','Внутренний порядок')]),n('balance','Равновесие')]), accent:'#72947b' }
+];
+
+export const states: StateItem[] = ['Бодрость','Усталость','Сонливость','Напряжение','Расслабленность','Истощение','Сосредоточенность','Рассеянность','Перегруженность','Апатия','Спокойная энергия','Возбуждение','Физический дискомфорт','Голод','Сытость','Нехватка энергии','Ощущение отдыха','Внутреннее напряжение','Ментальная усталость'].map(label => ({ id: label.toLowerCase().replaceAll(' ','_'), label }));
+
+export const relationIds: Record<string,string[]> = { resentment:['disappointment','indignation','pain'], anxiety:['nervousness','uncertainty','tense_waiting'], interest:['curiosity','engagement','anticipation'], confusion:['uncertainty','perplexity','shock'] };
+
+export function flattenEmotions(nodes: EmotionNode[] = emotionFamilies): {node:EmotionNode; familyId:string}[] {
+  const out: {node:EmotionNode; familyId:string}[] = [];
+  const walk = (node: EmotionNode, familyId: string) => { out.push({node,familyId}); node.children?.forEach(c=>walk(c,familyId)); };
+  nodes.forEach(node=>walk(node,node.id));
+  return out;
+}
+
+export const allEmotions = flattenEmotions();
+export const getEmotion = (id:string) => allEmotions.find(x=>x.node.id===id);
+export const getState = (id:string, custom:StateItem[] = []) => [...states,...custom].find(x=>x.id===id);

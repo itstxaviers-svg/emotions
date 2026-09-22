@@ -1,0 +1,12 @@
+import type { DayData } from './types';
+export const localDateKey=(d=new Date())=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+export const dateFromKey=(key:string)=>{ const [y,m,d]=key.split('-').map(Number); return new Date(y,m-1,d); };
+export const formatFullDate=(key:string)=>new Intl.DateTimeFormat('ru-RU',{weekday:'long',day:'numeric',month:'long'}).format(dateFromKey(key));
+export const formatMonth=(date:Date)=>new Intl.DateTimeFormat('ru-RU',{month:'long',year:'numeric'}).format(date);
+export const timeValue=(iso:string)=>new Intl.DateTimeFormat('ru-RU',{hour:'2-digit',minute:'2-digit'}).format(new Date(iso));
+export const uid=()=>crypto.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+export const hslToHex=(h:number,s:number,l:number)=>{s/=100;l/=100;const k=(n:number)=>(n+h/30)%12,a=s*Math.min(l,1-l),f=(n:number)=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));return '#'+[f(0),f(8),f(4)].map(x=>Math.round(255*x).toString(16).padStart(2,'0')).join('');};
+export const timeGroup=(iso:string)=>{const h=new Date(iso).getHours();return h>=5&&h<12?'Утро':h>=12&&h<17?'День':h>=17&&h<23?'Вечер':'Ночь';};
+export const entriesCount=(days:DayData[])=>days.reduce((n,d)=>n+d.entries.length,0);
+export const frequency=(days:DayData[],type:'emotions'|'states')=>{const m=new Map<string,number>();days.forEach(d=>d.entries.forEach(e=>e[type].forEach(x=>{const id='emotionId'in x?x.emotionId:x.stateId;m.set(id,(m.get(id)||0)+1)})));return [...m].sort((a,b)=>b[1]-a[1]);};
+export const averageIntensity=(days:DayData[])=>{const v=days.flatMap(d=>d.entries.flatMap(e=>e.emotions.map(x=>x.intensity).filter(Boolean) as number[]));return v.length?v.reduce((a,b)=>a+b,0)/v.length:0;};
